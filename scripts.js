@@ -28,16 +28,17 @@ $(document).ready(function () {
         $previewImageCard.show();
     }
 
-    
+
     $("#imageUploadForm").on("submit", (event) => {
         event.preventDefault();
-        // console.log("filesJSON", filesJSON[0]);
-        // console.log("files from submit", files[0]);
-        // $.post("/", filesJSON[0]).then(data => console.log(data));
-        fetch('/',{
+        // const formData = new FormData();
+
+        console.log("files before post", files[0]);
+        fetch('/', {
             method: 'POST',
             body: files[0]
-        })
+        }).then(data => console.log(data)).catch(err => {throw err});
+
     });
 
     input.addEventListener('change', update);
