@@ -32,12 +32,26 @@ $(document).ready(function () {
     $("#imageUploadForm").on("submit", (event) => {
         event.preventDefault();
         // const formData = new FormData();
+        console.log("input.files", input.files);
+        const pictureData = new FormData();
 
-        console.log("files before post", files[0]);
-        fetch('/', {
-            method: 'POST',
-            body: files[0]
+        pictureData.set("userPic", files[0]);
+        
+        console.log("pictureData", pictureData);
+        $.ajax({
+            enctype: "multipart/form-data",
+            method: "POST",
+            processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
+            url: "/",
+            data: pictureData
         }).then(data => console.log(data)).catch(err => {throw err});
+        // fetch('/', {
+        //     method: 'POST',
+        //     body: pictureData
+        // }).then(data => console.log(data)).catch(err => {throw err});
 
     });
 

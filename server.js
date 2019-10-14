@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-  console.log(req.body);
+  console.log(req.files);
   // res.send("yep, got it");
   if (!req.files || Object.keys(req.files).length === 0) {
     return res.status(400).send('No files were uploaded.');
