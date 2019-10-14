@@ -9,23 +9,36 @@ $(document).ready(function () {
     const $previewImageCard = $("div.card");
     console.log(inputLabel[0].textContent);
 
+    let files;
+
     update = () => {
         $("img.previewImage").remove();
-        let files = input.files;
+        files = input.files;
         let fileName = files[0].name;
-        
+
         inputLabel[0].textContent = fileName;
         $previewCardTitle.text(fileName);
 
         let $img = $('<img>').addClass("previewImage");
-        
+
         $img.attr("src", window.URL.createObjectURL(files[0]));
         $previewImageCard.prepend($img);
         console.log("newURL", window.URL.createObjectURL(files[0]));
         $previewImageCard.removeClass("hide");
         $previewImageCard.show();
-
     }
 
+    
+    $("#imageUploadForm").on("submit", (event) => {
+        event.preventDefault();
+        // console.log("filesJSON", filesJSON[0]);
+        // console.log("files from submit", files[0]);
+        // $.post("/", filesJSON[0]).then(data => console.log(data));
+        fetch('/',{
+            method: 'POST',
+            body: files[0]
+        })
+    });
+
     input.addEventListener('change', update);
-})
+});

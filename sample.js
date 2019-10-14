@@ -36,8 +36,8 @@ AWS.config.update({
 
 
 function addPhoto(req, res) {
-    const imageName = uuid.v4() + req.files.image.name;
-    const file = req.files.image;
+    const imageName = uuid.v4() + "_" + req.files[0].name;
+    const file = req.files[0];
 
     console.log("file from sample.js", file);
     console.log("imageName from sample.js", imageName);

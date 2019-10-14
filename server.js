@@ -29,24 +29,14 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 })
 
-app.post('/upload', (req, res) => {
+app.post('/', (req, res) => {
+  console.log(req.body);
+  // res.send("yep, got it");
   if (!req.files || Object.keys(req.files).length === 0) {
     return res.status(400).send('No files were uploaded.');
   }
 
-  // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-  // let image = req.files.image;
-  console.log("what was in the request");
-
   photoTextModule(req, res);
-
-  // Use the mv() method to place the file somewhere on your server
-  // image.mv(`./media/images/image${uuid()}.jpg`, function(err) {
-  //   if (err)
-  //     return res.status(500).send(err);
-
-  //   res.send('File uploaded!');
-  // });
 });
 
 app.use(express.urlencoded({ extended: true }));
