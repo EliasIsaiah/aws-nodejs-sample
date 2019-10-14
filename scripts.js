@@ -48,11 +48,6 @@ $(document).ready(function () {
             url: "/",
             data: pictureData
         }).then(data => console.log(data)).catch(err => {throw err});
-        // fetch('/', {
-        //     method: 'POST',
-        //     body: pictureData
-        // }).then(data => console.log(data)).catch(err => {throw err});
-
     });
 
     input.addEventListener('change', update);
