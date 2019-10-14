@@ -1,0 +1,12 @@
+.hide {
+    display: none;
+}
+
+.show {
+    display: inherit;
+}
+
+img.previewImage {
+    width: auto;
+    height: 150px !important;
+}
