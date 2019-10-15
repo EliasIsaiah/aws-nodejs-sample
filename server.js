@@ -6,7 +6,7 @@ const photoTextModule = require('./sample.js');
 
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 })
 
-app.post('/', (req, res) => {
+app.post('/photoUpload', (req, res) => {
   console.log(req.files);
   // res.send("yep, got it");
   if (!req.files || Object.keys(req.files).length === 0) {

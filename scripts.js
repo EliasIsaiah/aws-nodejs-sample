@@ -45,7 +45,7 @@ $(document).ready(function () {
             contentType: false,
             cache: false,
             timeout: 600000,
-            url: "/",
+            url: "/photoUpload",
             data: pictureData
         }).then(data => console.log(data)).catch(err => {throw err});
     });
