@@ -1,7 +1,6 @@
 const express = require('express');
 const expressFileUpload = require('express-fileupload');
 const path = require('path');
-const uuid = require('uuid');
 const photoTextModule = require('./sample.js');
 
 const app = express();
@@ -42,7 +41,6 @@ app.post('/photoUpload', (req, res) => {
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// app.use('/', routes);
 app.post('/addPicture', (req, res) => {
     console.log(req);
     res.send(req);
