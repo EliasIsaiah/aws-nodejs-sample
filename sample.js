@@ -21,7 +21,7 @@ function addPhoto(req, res) {
 
     const photoObjectParams = {
         params: {
-            Bucket: "test-bucket5643",
+            Bucket: "test-bucket-696969",
             Key: imageName,
             Body: file.data,
             ACL: "public-read"
