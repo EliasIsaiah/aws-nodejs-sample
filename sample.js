@@ -2,6 +2,7 @@
 const AWS = require('aws-sdk');
 const uuid = require('uuid');
 require('dotenv').config();
+const sharp = require('sharp');
 
 // Create a promise on S3 service object
 AWS.config.update({
@@ -45,3 +46,16 @@ function addPhoto(req, res) {
 }
 
 module.exports = addPhoto;
+
+sharp(req.files.userPic.data)
+.resize(800, 800, {
+  fit: sharp.fit.inside,
+  withoutEnlargement: true
+})
+.toFormat('jpeg')
+.toBuffer()
+.then((outputBuffer) => {
+  console.log("req.files", req.files);
+  photoTextModule(outputBuffer, req.files, res);
+  // res.send(outputBuffer);
+});
